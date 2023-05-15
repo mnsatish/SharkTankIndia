@@ -1,0 +1,250 @@
+---
+title: "5250 Assignment 2 : R Markdown"
+author: "Satish Mahabhashyam (0721750)"
+output: pdf_document
+---
+
+# Shark Tank India Data Analysis
+
+## Background
+
+Shark Tank India, is an Indian Hindi-language business reality television series that airs on Sony Entertainment Television. The show is the Indian franchise of the American show Shark Tank. On the show, investors are referred to as "Sharks". The Sharks listen to the entrepreneurs who pitch their ideas for a product or business they wish to develop. This panel of self-made millionaires evaluate business concepts presented and decide if they are willing to invest their own cash in helping market and mentor each business.
+
+We know that in such meetings the entrepreneurs and investors fight tooth and nail for equity. The deal amount is usually not given at their pre-decided equity offered. A lot depends on how they make their sales pitch. Previous research has shown how aggressive investors have given opportunities to entrepreneurs [[1]](https://www.researchgate.net/publication/336375992_Has_aggressive_investing_strategy_performed_An_insight_from_Malaysia_listed_companies). In this analysis, we try to find out which shark was the most aggressive one who invested in most number of businesses. On the contrary, research shows the behavioral traits of a risk averse investor [[2]](https://www.researchgate.net/publication/342689755_A_study_on_behavioural_traits_of_risk_averse_investors_Evidences_from_India). To see which sharks were the most risk averse shark we will perform an analysis and learn about him. An important reason for getting a good deal is how the entrepreneurs calculate their company’s actual valuation. Valuation is both art and science and more can be found in the paper “Valuation” by Michael E. S. Frankel, Larry H. Forman [[3]](https://www.researchgate.net/publication/315893693_Valuation). It mentions that generally, deals get closed at a lower valuation than the asking valuation. We will analyze the data and check whether any business got a deal higher than their asking valuation. We know that, when the ask valuation increases, the amount of negotiation is also likely to increase. The entrepreneurs should possess strong negotiating skills for getting the best amount for as low equity as possible. Based on the paper “Negotiating” by Colleen [[4]](https://www.researchgate.net/publication/331044252_Negotiating) we should examine a selection of individual and social variables that shape negotiation and a cross-section of the negotiation model. 
+
+
+India is still a developing country and the market is rapidly changing everyday. People are willing to spend more money now than they ever have. This creates ample opportunity for upcoming entrepreneurs to make lots of money by starting up a company which solves real world problems. An entrepreneur should possess many characteristics to be successful. The paper “Traits of Successful Entrepreneurs” by H Ramananda Singh and Dr. Habib Ratvi [[5]](https://www.researchgate.net/publication/273445209_Traits_of_Successful_Entrepreneurs) speaks about the factors which lead to the success of an entrepreneur. The better the negotiating skills, along with higher valuation the more successful the entrepreneur is.
+
+Based on their investment data and the data of the pitchers attending the show, the following analysis has been conducted.
+
+## Data Description
+
+This dataset consists of the data from the first season of Shark tank India which premiered on 20 December 2021 and concluded on 4 February 2022. It aired a total of 35 episodes in which about 3 to 4 pitches were made in every episode. A total of INR 39 crore, equivalent to 6.5 million canadian dollars, were invested by the sharks. There were between 5 to 7 sharks present in the panel in all the episodes except 34th and 35th. The show received a total of 62,000 applications from every corner of India and out of those aspirants, only 198 businesses were selected to pitch their ideas to the “sharks”. Out of 198 investment pitches at the reality TV show, 117 were finally aired and only 67 businesses got the deals. The dataset below is for the 117 shows which were aired. The attributes of the dataset are accurate, relevant, and are just 1 month old which makes it very recent and interesting to analyze. The dataset has no missing values.
+
+
+## Below is the background of Sharks in Season 1  
+
+1. Ashneer Grover - Managing Director and Co-founder of BharatPe
+2. Aman Gupta - Co-founder and Chief Marketing Officer of boAt
+3. Anupam Mittal - Founder and CEO of Shaadi.com and People Group
+4. Ghazal Alagh - Co-founder and Chief Mama of MamaEarth
+5. Namita Thapar - Executive Director of Emcure Pharmaceuticals
+6. Peyush Bansal - Co-founder and CEO of Lenskart
+7. Vineeta Singh - CEO and co-founder of SUGAR Cosmetics
+
+Attributes                                Description    
+--------------------------------------    --------------------------------------
+Episode_number                            Number of the episode
+Pitch_number                              Number of the Pitch
+Brand_name                                Name of the brand given by the business owner
+Idea                                      Aim or purpose behind the brand
+Deal                                      Done or not ; 1 - YES, 0 - NO
+Pitcher_ask_amount                        Amount asked by the pitchers
+Ask_equity                                Equity offered by the pitchers
+Ask_valuation                             Valuation asked by pitchers
+Deal_amount                               Final Deal Amount
+Deal_equity                               Final Deal equity percentage
+Deal_valuation                            Final Valuation of Company after Deal
+Ashneer_present                           Ashneer was present during the pitching ; 1 - YES, 0 - NO
+Anupam_present                            Anupam was present during the pitching ; 1 - YES, 0 - NO
+Aman_present                              Aman was present during the pitching ; 1 - YES, 0 - NO
+Namita_present                            Namita was present during the pitching ; 1 - YES, 0 - NO
+Vineeta_present                           Vineeta was present during the pitching ; 1 - YES, 0 - NO
+Peyush_present                            Peyush was present during the pitching ; 1 - YES, 0 - NO
+Ghazal_present                            Ghazal was present during the pitching ; 1 - YES, 0 - NO
+Ashneer_deal                              Ashneer is a part of Final Deal ; 1 - YES, 0 - NO
+Anupam_deal                               Anupam is a part of Final Deal ; 1 - YES, 0 - NO
+Aman_deal                                 Aman is a part of Final Deal ; 1 - YES, 0 - NO
+Namita_deal                               Namita is a part of Final Deal ; 1 - YES, 0 - NO
+Vineeta_deal                              Vineeta is a part of Final Deal ; 1 - YES, 0 - NO
+Peyush_deal                               Peyush is a part of Final Deal ; 1 - YES, 0 - NO
+Ghazal_deal                               Ghazal is a part of Final Deal ; 1 - YES, 0 - NO
+Total_sharks_invested                     Number of total sharks invested in the Company
+Amount_per_shark                          Amount per shark invested
+Equity_per_shark                          Final Equity gained per Shark
+
+The Shark Tank India Data set has a total of 28 attributes consisting of both Numerical (Discrete, Continuous) and Categorical variables. All attributes are presented below in tabular format for better clarity.
+
+Numerical                   Categorical                      
+-------------------------   ----------------------------
+Episode_number              Brand_name
+Pitch_number                Idea
+Deal_amount                 Deal
+Deal_equity                 Ashneer_present
+Total_sharks_invested       Anupam_present
+Pitcher_ask_amount          Aman_present
+Ask_equity                  Namita_present
+Ask_valuation               Vineeta_present
+Amount_per_shark            Peyush_present
+Equity_per_shark            Ghazal_present
+                            Ashneer_deal
+                            Anupam_deal
+                            Aman_deal
+                            Namita_deal
+                            Vineeta_deal
+                            Peyush_deal
+                            Ghazal_deal
+                            Deal_valuation
+
+
+## Importing packages
+
+```{r echo = TRUE, results = 'asis'}
+library(knitr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+## Reading Data
+
+```{r echo = TRUE, results ='asis'}
+data <- read.csv("/Users/mns13macbookpro/Downloads/Shark Tank India Dataset.csv")
+```
+
+The dimensions of the dataset is
+
+```{r echo = TRUE, results ='asis'}
+dim(data)
+```
+
+## Data Cleaning
+
+There are no missing data in the dataset  
+
+```{r echo = TRUE, results ='asis'}
+hist(data$deal_amount, freq = FALSE)
+```
+
+We can see that, there is an outlier in the dataset and also the data is left skewed. Since Deal_amount is a numerical variable we will perform the t-test.  
+
+```{r echo = TRUE, results ='asis'}
+t.test(data$deal_amount)
+```
+
+Since the p value is less than 0.05 we can reject the null hypothesis and accept the alternative hypothesis.  
+
+### Calculating a column to check the difference between the valuation asked and the valuation offered by the shark.  
+
+```{r echo = TRUE, results ='asis'}
+data <- data%>%
+  dplyr::mutate(ask_valuation_diff = ifelse(data$equity_per_shark == 0, "No Deal", 
+                                            data$ask_valuation - data$deal_valuation))
+No_Deal <- sum(data$ask_valuation_diff == "No Deal")
+No_Deal
+117-No_Deal
+```
+
+This shows that out of 117 pitches in shark tank only 65 resulted in a deal whereas 52 did not result in a deal.  
+
+## Results  
+
+Comparison between valuation asked and the diff between the valuation asked and offered
+
+```{r echo = FALSE, results ='asis', warning=FALSE}
+plot1 <- ggplot(data = data, 
+                mapping = aes(x=data$ask_valuation,
+                              y=as.numeric(data$ask_valuation_diff))) + 
+  geom_point()
+plot1<- plot1 + xlim(0,11000)
+
+plot1 <- plot1 + geom_smooth(method = "lm",se=FALSE)
+plot1
+```
+
+* As per the plot, there is only one deal which was closed at a higher valuation than the ask valuation, the rest were closed at a lower valuation.  
+
+* Moreover, it is evident that most of the points are near or above the line of best fit and the positive slope indicates that as the ask valuation increased so did the amount of negotiation.  
+
+### Trend of total sharks invested
+
+```{r echo = FALSE, results ='asis', warning=FALSE}
+ggplot(data = data, 
+       mapping = aes(data$total_sharks_invested)) + 
+  geom_bar(fill = "blue")
+```
+
+## Shark Based Analysis
+
+Deals confirmed per pitch presence per shark
+```{r echo = FALSE, results ='hide'}
+Sharks <- c("Anupam","Ashneer","Aman","Namita","Vineeta","Peyush","Ghazal")
+Deals_Confirmed <- c(sum(data$anupam_deal),
+                     sum(data$ashneer_deal),
+                     sum(data$aman_deal),
+                     sum(data$namita_deal),
+                     sum(data$vineeta_deal),
+                     sum(data$peyush_deal),
+                     sum(data$ghazal_deal))
+
+Pitch_Presence <- c(sum(data$anupam_present),
+                    sum(data$ashneer_present),
+                    sum(data$aman_present),
+                    sum(data$namita_present),
+                    sum(data$vineeta_present),
+                    sum(data$peyush_present),
+                    sum(data$ghazal_present))
+
+dps <- data.frame(Sharks,Pitch_Presence,Deals_Confirmed)
+
+dps%>% mutate(
+  Deals_per_Pitch_Presence = round(Deals_Confirmed/Pitch_Presence,3))
+```
+
+```{r echo = FALSE, results ='asis'}
+print(kable(dps), type = "latex", comment=FALSE)
+```
+
+* According to the table, it is clear that Anupam attended more pitches than any other investor, but he was the most risk-averse, with the fewest deals.  
+* Peyush was the most aggressive investor also having the second highest number of deals just 1 short of Aman  
+
+# Total Investment per shark
+```{r echo = FALSE, results='hide'}
+subset <- data[19:27]
+subset1 <- subset %>% 
+  mutate(Ashneer_invest = ashneer_deal*amount_per_shark) %>% 
+  mutate(Anupam_invest = anupam_deal*amount_per_shark) %>% 
+  mutate(Aman_invest = aman_deal*amount_per_shark) %>% 
+  mutate(Namita_invest = namita_deal*amount_per_shark) %>% 
+  mutate(Vineeta_invest = vineeta_deal*amount_per_shark) %>% 
+  mutate(Peyush_invest = peyush_deal*amount_per_shark) %>% 
+  mutate(Ghazal_invest = ghazal_deal*amount_per_shark)
+
+Investment <- c(sum(subset1$Ashneer_invest),
+                sum(subset1$Anupam_invest),
+                sum(subset1$Aman_invest),
+                sum(subset1$Namita_invest),
+                sum(subset1$Vineeta_invest),
+                sum(subset1$Peyush_invest),
+                sum(subset1$Ghazal_invest))
+
+ips<- data.frame(Sharks,Investment)
+```
+
+
+```{r echo = FALSE, results ='asis'}
+print(kable(ips), type = "latex", comment=FALSE)
+```
+
+* As we had seen earlier, that Aman and Peyush had the most number of deals and they both have invested the highest amounts as well.  
+
+* Ghazal has the least Investment amount as she also had the lowest Presence in the show.
+
+
+## Conclusion
+
+From the above analysis we have found all the results which we initially planned for. For finding out which shark was the most aggressive, who invested in the most number of businesses, firstly, we created a shark vector consisting of all the names of the sharks throughout the season. We then created a deals confirmed vector and a pitch presence vector and created a new variable (dps) using mutate function to get the deals confirmed per pitch presence per shark table. From the table we could clearly see that Sharks Aman and Peyush were the most aggressive investors with the total deals confirmed as 28 and 27 respectively. From this table, we also found which shark was the most risk averse shark. It was Anupam, since he was present in all the pitches yet he confirmed 24 deals only. This shows Anupam is picky about investing in businesses and he might have the three behavioral traits of a risk averse person which relate to thumb rule, natural calamity and double mindedness while investing.  
+
+For checking whether any businesses got a deal higher than the asking evaluation, we plotted a linear regression graph in which we got a positive correlation, which means, as the asking valuation increases, the amount also increases which means the negotiation skills of entrepreneurs were good. There is only one deal which was closed at a higher valuation than the ask valuation. Further, we can see that the rest of the deals went mostly at the same valuation since most of the points of the graph are just on the regression line. This proves that getting a higher valuation than the asking valuation is extremely difficult. From the same graph we can infer that the negotiation skills of the entrepreneurs were neither good, since they failed to increase deal amount without raising asking equity, nor bad since they did not let the Sharks raise equity without raising the deal amount.From the analysis we can also see that there is an outlier where the equity per shark jumped more than usual. The company’s name was Sid07 Designs which was a Research & Invention type startup which pitched in episode  21, pitch 66 and Peyush seems to have liked the idea, hence he signed  a deal giving a deal amount of 25 lakhs rupees at 75 % equity.
+
+Also, from the bar chart showing total sharks invested, we can see that most of the deals which went through had 1, 2 or 3 sharks. The combined deal with sharks gives the entrepreneurs better mentorship opportunities from diversified field experts.
+
+## References
+
+1. [Kontesa, Maria & Lim, Emily & Brahmana, Rayenda. (2019). Has aggressive investing strategy performed? An insight from Malaysia listed companies. Jurnal Keuangan dan Perbankan. 23. 10.26905/jkdp.v23i3.3069.](https://www.researchgate.net/publication/336375992_Has_aggressive_investing_strategy_performed_An_insight_from_Malaysia_listed_companies)
+2. [Mahmood, Athar & U Ahmad, Moid. (2020). A study on behavioural traits of risk averse investors: Evidences from India. SMART Journal of Business Management Studies. 16. 115. 10.5958/2321-2012.2020.00022.6.](https://www.researchgate.net/publication/342689755_A_study_on_behavioural_traits_of_risk_averse_investors_Evidences_from_India)
+3. [Frankel, Michael & Forman, Larry. (2017). Valuation. 10.1002/9781119380726.ch8.](https://www.researchgate.net/publication/315893693_Valuation)
+4. [Mills, Colleen. (2019). Negotiating.](https://www.researchgate.net/publication/331044252_Negotiating)
+5. [Singh, H & Ratvi, Dr. Habib. (2013). Traits of Successful Entrepreneurs. International Journal of Scientific Research. 2. 10.15373/22778179/NOV2013/93.](https://www.researchgate.net/publication/273445209_Traits_of_Successful_Entrepreneurs)
+6. [https://en.wikipedia.org/wiki/Shark_Tank_India](https://en.wikipedia.org/wiki/Shark_Tank_India)
+7. [https://www.sonyliv.com/shows/shark-tank-india-1700000741](https://www.sonyliv.com/shows/shark-tank-india-1700000741)

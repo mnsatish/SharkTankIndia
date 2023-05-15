@@ -1,0 +1,38 @@
+---
+title: "5250 Term project"
+author: "Satish Mahabhashyam (0721750)"
+output: pdf_document
+---
+
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+
+# Facebook Ad Analysis
+
+## Literature Review
+
+The Internet has changed the world in ways that were unimaginable a couple of decades back. This method of connectivity on such a massive scale has given businesses and individuals uncountable opportunities. With the growing population and increasing numbers of people in the digital world, we are seeing a constant rise in data. This ginormous amount of data is termed Big Data. Big Data is a seemingly complex term but has a simple explanation. To put it simply, we can take massive amounts of data and derive a story from it. This was needed because a few years ago all this data was mostly gibberish to us. With the advancements in distributed computing and parallel processing, this equation has completely changed. We can now analyze this data, detect patterns & derive predictions from it. Big Data is being used by businesses to predict the customer’s needs, pain points & future complaints. These implications are huge and can increase a company’s profits tremendously. It is shocking to see how efficiently the new digital marketing strategies work. Smaller companies, with small budgets, are also capitalizing on Big Data. Research carried out by EMC Forum 2013 indicates that 39% of entrepreneurs believe that Big Data provides business success [1].  
+
+Big data consists of various types of data. It can contain text, documents, multimedia files, transactions, financial records, web server logs and streaming data from sensors. These varieties of data are majorly categorized into three categories – structured, semi-structured and unstructured. These categories have different roles in helping create a data model. More about these can be found in the paper “Influence of structured, semi-structured, unstructured data on various data models” [2]. Big data management is mostly characterized by 3 Vs – Volume, Velocity and Variety. These 3Vs play a significant role in distinguishing big data from traditional data. Previous research has shown how social media sites like Facebook and Twitter account for a large percentage of digital content [3]. 
+
+Advertisements have massively changed over the last 50 years. Previous researches show that with the advancement in technology consumers are now in control of the media message they want to become exposed to [4]. Targeted Facebook ads are an especially good example of this. When it comes to ‘Personal’ information, Facebook’s data collection is unmatched. Facebook can predict what users will be interested in purchasing in the coming days, weeks & months. It does it by collecting massive amounts of even the most MINUTE data, like how long your cursor hovers over a certain link. In their paper, Jan-Willem van Dam and Michel van de Velden explain show how data from Facebook is used to gain insight into the individuals having an account on the Facebook site [5]. With their most recent acquisition of Oculus [6], Facebook can now track & record, how long a user looks at a certain object. This strategy of acquiring data by Facebook allows its clients to cost-effectively target their audience with shocking accuracy. Big Data is changing the landscape of technology and business.
+
+Using the personal data of users, Facebook makes a profile of users based on their likes, dislikes, and their behavior. They do so to create sophisticated profiles of the user for predictive purposes. The article shows how companies like Facebook and Google/Alphabet and a few third-party data brokers collect and combine detailed personal data to create sophisticated profiles [15]. This is the reason why Facebook seems attractive to advertisers. More about why it is so can be read in the paper “The effectiveness of Facebook Advertising by the Degree of its benefits to Advertisers” by Ahmet Ertugan [7]. This gives the advertisers the ability to not only build their own adverts but also, design their own audience for the advert they created. Audiences can be built from a range of attributes including age, gender, the user’s location, and interests. Even though the product being marketed is the same, with such precise methods of targeting users, advertisers can tailor content perfectly for a specific audience. This gives them a massive edge over other businesses.
+
+In 2016, Facebook's revenue from advertising was \$26bn, up from \$17bn the year before [8]. This compares to Google's \$79bn [9] the \$638m that Twitter advertising made in Q4 2016 [10] and $173m that LinkedIn made from ads in Q3 2016 [11]. Even though Facebook lost many young users back in 2017, it still holds second place after Google in terms of ad revenue today.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+
+```
+
+```{r pressure, echo=FALSE}
+
+```
